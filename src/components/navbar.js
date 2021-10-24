@@ -17,7 +17,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { GroupOutlined } from '@mui/icons-material';
+import {Row,Col} from 'react-bootstrap'
+import {Button, Icon,Label,Image} from 'semantic-ui-react'
 import Table from './table.js';
+import avatar from './image/avatar.jpg'
 import { DescriptionOutlined, LocalMallOutlined, PetsOutlined, SaveOutlined, VerifiedOutlined } from '@mui/icons-material';
 const drawerWidth = 240;
 
@@ -115,17 +119,23 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <div class="input-group mb-3">
-          <input type="text" class="form-control"  placeholder="Search Name,Gender,Height,etc." aria-label="Username"  />
+          <div class='col-9'>
+          <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><Icon name='search' size='large' /></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Search name,birthyear,height,etc." aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search Name,Gender,Height,etc." aria-label="Username"  />
         </div>
+        <Button style={{backgroundColor:'black',color:'white',marginLeft:'auto'}}><Icon name='bug' />Report Bug</Button>
+        <Label style={{backgroundColor:'black',color:'white'}}>Matt{" "}
+      <Image avatar spaced='right' src={avatar} />
+    </Label>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent"  open={open} >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose} style={{marginLeft:10}}>
+          <IconButton onClick={handleDrawerClose} >
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
@@ -165,6 +175,43 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
+        <Row>
+          <Col lg='8'>
+          <Button><Icon name='group'/>Employees</Button>
+        <Button><Icon name='shopping bag'/>Has 8 sales roles</Button>
+        <Button><Icon name='folder'/>Is in 3 categories</Button>
+        <Button><Icon name='tag'/>Sells any product</Button>
+        <Button><Icon name='globe'/>Is based in sweden</Button>
+        <Button style={{backgroundColor:'yellowgreen'}}>+</Button>
+          </Col>
+          <Col lg='1'/>
+          <Col lg='1' style={{marginLeft:'auto'}}>
+          <h6 style={{marginTop:12,fontWeight:'bold',color:'black'}}>Clear</h6>       
+          </Col>
+          <Col lg='1' >
+        <h6 style={{marginTop:12,fontWeight:'bold',color:'blue'}}>Save Report</h6>
+          </Col>
+        </Row>    
+        <br/><hr/><br/>
+        <Row>
+          <Col lg='6'>
+          <h6 style={{fontWeight:'bold',color:'blue'}}>
+        <Icon name='columns' />Manage Colums</h6>
+          </Col>
+          <Col lg='4' style={{marginLeft:'auto'}} >
+          <h6 style={{fontWeight:'bold',color:'black'}}>
+        82 Names Found</h6>
+          </Col>
+          <Col lg='1' >
+          <h6 style={{fontWeight:'bold',color:'red'}}>
+        <Icon name='delete' />Delete</h6>
+          </Col>
+          <Col lg='1'>
+          <h6 style={{fontWeight:'bold',color:'green'}}>
+        <Icon name='edit' />Edit</h6>
+          </Col>
+        </Row><br/>
+        
        <Table/>
       </Box>
     </Box>
