@@ -6,7 +6,6 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -15,15 +14,20 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { GroupOutlined } from '@mui/icons-material';
 import {Row,Col} from 'react-bootstrap'
 import {Button, Icon,Label,Image} from 'semantic-ui-react'
 import Table from './table.js';
-import avatar from './image/avatar.jpg'
+import avatar from '../image/avatar.jpg'
+import { makeStyles } from "@material-ui/core/styles";
 import { DescriptionOutlined, LocalMallOutlined, PetsOutlined, SaveOutlined, VerifiedOutlined } from '@mui/icons-material';
+
 const drawerWidth = 240;
+const useStyles = makeStyles({
+  paper: {
+    background: "black",
+    color:'white'
+  }
+});
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -73,7 +77,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-  
+    const classes = useStyles();
     const handleDrawerOpen = () => {
       setOpen(true);
     };
@@ -98,10 +102,7 @@ export default function PersistentDrawerLeft() {
             </IconButton>
             <div class='col-8'>
           <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><Icon name='search' size='large' /></span>
-          </div>
-          <input type="text" class="form-control" placeholder="Search name,birthyear,height,etc." aria-label="Username" aria-describedby="basic-addon1"/>
+          <input type="text" class="form-control" style={{fontFamily:'FontAwesome',color:'white',border:'none',backgroundColor:'#2D2A3E'}} placeholder="&#xF002; Search Name,Gender,etc." aria-label="Username" aria-describedby="basic-addon1"/>
         </div>
         </div>
         
@@ -119,43 +120,44 @@ export default function PersistentDrawerLeft() {
               boxSizing: 'border-box',
             },
           }}
+          classes={{paper: classes.paper}}
           variant="persistent"
           anchor="left"
           open={open}
         >
           <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'ltr' ? <ChevronLeftIcon style={{color:'white'}} /> : <ChevronRightIcon style={{color:'white'}} />}
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List style={{marginLeft:10}}>
+          <List>
             <ListItem button >
-              <ListItemIcon>
+              <ListItemIcon style={{color:'gray'}}>
                 <PetsOutlined /> 
               </ListItemIcon>
               <ListItemText primary='Lorem' />
             </ListItem>
             <ListItem button >
-              <ListItemIcon>
+              <ListItemIcon style={{color:'gray'}}>
                 <LocalMallOutlined /> 
               </ListItemIcon>
               <ListItemText primary='Ipsum' />
             </ListItem>
             <ListItem button >
-              <ListItemIcon>
+              <ListItemIcon style={{color:'gray'}}>
                 <SaveOutlined /> 
               </ListItemIcon>
               <ListItemText primary='Dollar' />
             </ListItem>
             <ListItem button >
-              <ListItemIcon>
+              <ListItemIcon style={{color:'gray'}}>
                 <DescriptionOutlined /> 
               </ListItemIcon>
               <ListItemText primary='Sit' />
             </ListItem>
             <ListItem button >
-              <ListItemIcon>
+              <ListItemIcon style={{color:'gray'}}>
                 <VerifiedOutlined /> 
               </ListItemIcon>
               <ListItemText primary='Amit' />
@@ -167,22 +169,22 @@ export default function PersistentDrawerLeft() {
          
         <Row>
           <Col xs='7'>
-          <h6 style={{fontWeight:'bold',color:'blue'}}>
-        <Icon name='columns' />Manage Colums</h6>
+          <h6 style={{fontWeight:'bold',color:'#6d37ed'}}>
+        <Icon name='columns' />Manage Columns</h6>
           </Col>
           <Col xs='5' >
           <h6 style={{fontWeight:'bold',color:'black'}}>
-        82 Names Found</h6>
+          82 Names Found</h6>
           </Col>
-          </Row>
+          </Row><br/>
           <Row>
-          <Col xs='5'/>
-          <Col xs='4' >
+          <Col xs='7'/>
+          <Col xs='3' >
           <h6 style={{fontWeight:'bold',color:'red'}}>
         <Icon name='delete' />Delete</h6>
           </Col>
-          <Col xs='3'>
-          <h6 style={{fontWeight:'bold',color:'green'}}>
+          <Col xs='2'>
+          <h6 style={{fontWeight:'bold',color:'#6d37ed'}}>
         <Icon name='edit' />Edit</h6>
           </Col>
           </Row>

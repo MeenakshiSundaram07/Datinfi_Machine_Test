@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react';
 import {Pagination} from 'semantic-ui-react'
-import './table.css';
+import '../css/table.css';
 
 const Table = () => {
 
@@ -30,7 +30,7 @@ const Table = () => {
 
     return (
         <div>
-        <div className="tableContainer" >
+        <div className="tableContainer"  >
             <table className="table">
                 <thead>
                     <tr>
@@ -56,12 +56,11 @@ const Table = () => {
                 </tbody>
             </table>
 
-        <div className='d-none d-sm-block' style={{display:'flex', alignItems:'center',justifyContent:'center',marginTop:'22px'}}>
-            <Pagination 
+        <div  style={{display:'flex', alignItems:'center',justifyContent:'center',marginTop:'22px',textAlign:'center'}}>
+        <Pagination 
         activePage={activePage}
         onPageChange={onChange}
-        totalPages={9}
-       
+        totalPages={9}      
         />
         </div>
             
